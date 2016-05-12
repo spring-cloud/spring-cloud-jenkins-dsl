@@ -4,7 +4,6 @@ import io.springframework.common.JdkConfig
 import io.springframework.common.Notification
 import io.springframework.common.Publisher
 import javaposse.jobdsl.dsl.DslFactory
-
 /**
  * @author Marcin Grzejszczak
  */
@@ -21,12 +20,12 @@ class CompatibilityBuildMaker extends CompatibilityTasks implements Notification
 
 	private void buildWithTests(String projectName, String cronExpr, boolean checkTests) {
 		dsl.job("${projectName}-compatibility-check") {
+			concurrentBuild()
+			parameters {
+				stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
+			}
 			triggers {
-				concurrentBuild()
 				cron cronExpr
-				parameters {
-					stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
-				}
 			}
 			jdk jdk8()
 			scm {

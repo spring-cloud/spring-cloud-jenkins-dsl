@@ -2,6 +2,7 @@ package springcloud
 
 import io.springframework.cloud.ci.*
 import io.springframework.cloud.common.AllCloudJobs
+import io.springframework.cloud.compatibility.BootCompatibility
 import io.springframework.cloud.compatibility.ClusterCompatibilityBuildMaker
 import io.springframework.cloud.compatibility.CompatibilityBuildMaker
 import io.springframework.cloud.compatibility.ConsulCompatibilityBuildMaker
@@ -27,6 +28,7 @@ def projectsWithTests = allProjects - 'spring-cloud-build'
 new CompatibilityBuildMaker(dsl).buildWithoutTests('spring-cloud-build', everyThreeHours())
 new ConsulCompatibilityBuildMaker(dsl).build()
 new ClusterCompatibilityBuildMaker(dsl).build()
+new BootCompatibility(dsl).build()
 
 // BENCHMARK BUILDS
 new BenchmarksBuildMaker(dsl).buildSleuth()

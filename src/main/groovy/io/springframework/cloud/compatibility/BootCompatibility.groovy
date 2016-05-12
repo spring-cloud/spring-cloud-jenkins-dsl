@@ -17,17 +17,13 @@ class BootCompatibility {
 
 	void build() {
 		dsl.multiJob('spring-cloud-boot-compatibility-check') {
-			triggers {
-				parameters {
-					stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
-				}
+			parameters {
+				stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
 			}
 			steps {
 				phase('spring-boot-compatibility-phase') {
-					def phaseDelegate = delegate
 					AllCloudJobs.ALL_JOBS.each { String projectName ->
-						delegate = phaseDelegate
-						job("$projectName-compatibility-check".toString()) {
+						phaseJob("$projectName-compatibility-check".toString()) {
 							currentJobParameters()
 						}
 					}
