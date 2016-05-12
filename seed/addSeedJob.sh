@@ -20,6 +20,9 @@ cp /usr/share/jenkins/spring-cloud-seed.xml $JENKINS_HOME/jobs/spring-cloud-seed
 chown -R jenkins:jenkins $JENKINS_HOME/
 ls -al $JENKINS_HOME/jobs/
 
+echo "Running plugins"
+/usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+
 echo "Running Jenkins again"
 pkill -f 'java'
 ps -efw | grep jenkins

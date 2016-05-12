@@ -26,7 +26,7 @@ class CompatibilityBuildMaker extends CompatibilityTasks implements Notification
 			triggers {
 				cron cronExpr
 				parameters {
-					stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION)
+					stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
 				}
 			}
 			jdk jdk8()
