@@ -1,6 +1,5 @@
 package springcloud
 
-import io.springframework.cloud.compatibility.ClusterCompatibilityBuildMaker
 import io.springframework.cloud.compatibility.CompatibilityBuildMaker
 import io.springframework.cloud.compatibility.ConsulCompatibilityBuildMaker
 import javaposse.jobdsl.dsl.DslFactory
@@ -19,7 +18,6 @@ def projectsWithTests = allProjects - 'spring-cloud-build'
 }
 new CompatibilityBuildMaker(dsl).buildWithoutTests('spring-cloud-build', everyThreeHours())
 new ConsulCompatibilityBuildMaker(dsl).build()
-new ClusterCompatibilityBuildMaker(dsl).build()
 
 // ========== FUNCTIONS ==========
 
