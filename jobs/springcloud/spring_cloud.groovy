@@ -1,6 +1,7 @@
 package springcloud
 
 import io.springframework.cloud.ci.*
+import io.springframework.cloud.common.AllCloudJobs
 import io.springframework.cloud.compatibility.ClusterCompatibilityBuildMaker
 import io.springframework.cloud.compatibility.CompatibilityBuildMaker
 import io.springframework.cloud.compatibility.ConsulCompatibilityBuildMaker
@@ -15,9 +16,7 @@ import javaposse.jobdsl.dsl.DslFactory
 
 DslFactory dsl = this
 
-def allProjects = ['spring-cloud-sleuth', 'spring-cloud-netflix', 'spring-cloud-zookeeper', 'spring-cloud-consul',
-				   'spring-cloud-bus', 'spring-cloud-commons', 'spring-cloud-config', 'spring-cloud-security',
-				   'spring-cloud-cloudfoundry', 'spring-cloud-aws', 'spring-cloud-build', 'spring-cloud-cluster']
+def allProjects = AllCloudJobs.ALL_JOBS
 
 def projectsWithTests = allProjects - 'spring-cloud-build'
 

@@ -18,7 +18,11 @@ class ConsulCompatibilityBuildMaker extends CompatibilityTasks implements Publis
 		String cronExpr = "H H/3 * * *"
 		dsl.job("${projectName}-compatibility-check") {
 			triggers {
+				concurrentBuild()
 				cron cronExpr
+				parameters {
+					stringParam(SPRING_BOOT_VERSION_VAR, DEFAULT_BOOT_VERSION, 'Which version of Spring Boot should be used for the build')
+				}
 			}
 			scm {
 				git {

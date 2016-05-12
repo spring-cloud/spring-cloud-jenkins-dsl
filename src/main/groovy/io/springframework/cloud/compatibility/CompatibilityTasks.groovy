@@ -9,7 +9,13 @@ import javaposse.jobdsl.dsl.helpers.step.StepContext
 @PackageScope
 abstract class CompatibilityTasks {
 
+	protected static final String DEFAULT_BOOT_VERSION = '1.4.0.BUILD-SNAPSHOT'
 	protected static final String SPRING_BOOT_VERSION_VAR = 'SPRING_BOOT_VERSION'
+
+	protected static final List<String> ALL_COMPATIBILITY_TASKS = [
+	        'spring-cloud-sleuth-compatibility-check',
+	        'spring-cloud-netflix-compatibility-check',
+	]
 
 	Closure defaultSteps() {
 		return buildStep {
