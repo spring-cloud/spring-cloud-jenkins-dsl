@@ -5,7 +5,6 @@ import javaposse.jobdsl.dsl.DslFactory
 
 import static io.springframework.cloud.compatibility.CompatibilityTasks.DEFAULT_BOOT_VERSION
 import static io.springframework.cloud.compatibility.CompatibilityTasks.SPRING_BOOT_VERSION_VAR
-
 /**
  * @author Marcin Grzejszczak
  */
@@ -25,7 +24,9 @@ class BootCompatibility {
 			}
 			steps {
 				phase('spring-boot-compatibility-phase') {
+					def phaseDelegate = delegate
 					AllCloudJobs.ALL_JOBS.each { String projectName ->
+						delegate = phaseDelegate
 						job("$projectName-compatibility-check".toString()) {
 							currentJobParameters()
 						}
