@@ -26,7 +26,7 @@ class BootCompatibility {
 			steps {
 				phase('spring-boot-compatibility-phase') {
 					AllCloudJobs.ALL_JOBS.each { String projectName ->
-						job("$projectName-compatibility-check") {
+						job("$projectName-compatibility-check".toString()) {
 							currentJobParameters()
 						}
 					}
