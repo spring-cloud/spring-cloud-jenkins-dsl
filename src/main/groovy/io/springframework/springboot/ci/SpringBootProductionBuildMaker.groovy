@@ -42,7 +42,7 @@ class SpringBootProductionBuildMaker implements SpringBootNotification, JdkConfi
 						echo "Building service"
 						version=1.3.5.RELEASE
 						if [ ! -d "spring-$version" ]; then
-						  wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/$version/spring-boot-cli-$version-bin.zip
+						  wget https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/$version/spring-boot-cli-$version-bin.zip
 						  unzip spring-boot-cli-$version-bin.zip
 						fi
 						spring-$version/bin/spring jar --exclude 'spring/**,start.jar' start.jar *.groovy
